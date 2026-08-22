@@ -1,0 +1,13 @@
+-ajouter une relation entre serveur et commande 
+
+-admin peut voir historique de chaque serveur(les tables qui ont  servi et son paiment)
+
+-ajouter un espace pour l'admin il peut :modifier menu , ajouter des serveurs ,voir historique de chaque serveur.
+
+-securite et auth
+
+-ajouter option de code qr
+
+-des animations specifique pour les boutons (cafe style)
+
+-des images pour les serveurs

@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 
 import menuRoutes from './routes/menuRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
-
+import userRoutes from './routes/users.js';
 dotenv.config();
 
 const app = express();
@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/api/menu', menuRoutes);
 app.use('/api/orders', orderRoutes);
-
+app.use('/api/users', userRoutes);
 // Socket.IO Event Handler
 io.on('connection', (socket) => {
   console.log(`⚡ Staff / Client connected: ${socket.id}`);

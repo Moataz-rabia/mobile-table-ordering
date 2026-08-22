@@ -45,7 +45,24 @@
             <span class="name">{{ item.name }}</span>
           </div>
         </div>
-
+  
+        <div v-if="order.status === 'ready'" class="waiter-assignment">
+            <label>Serveur attribué :</label>
+            <select 
+              :value="order.waiter?._id || order.waiter || ''" 
+              @change="assignWaiter(order._id, $event.target.value)"
+            >
+              <option value="" disabled>-- Choisir un serveur --</option>
+              <option 
+                v-for="waiter in waitersList" 
+                :key="waiter._id" 
+                :value="waiter._id"
+              >
+                {{ waiter.username }}
+              </option>
+            </select>
+          </div>
+          <br>
         <!-- Actions Cuisinier -->
         <div class="card-actions">
           <button 
@@ -62,7 +79,9 @@
             @click="updateStatus(order._id, 'ready')"
           >
             Marquer comme Prête
-          </button>
+          </button
+          
+          >
 
           <button 
             v-if="order.status === 'ready'" 
@@ -82,7 +101,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import api from '../../api/axios'; // Instance Axios centralisée
 import { io } from 'socket.io-client';
-
+import '../../assets/css/KitchenDashboard.css';
 const orders = ref([]);
 const loading = ref(true);
 const errorMessage = ref(''); 
@@ -192,164 +211,13 @@ onMounted(() => {
       orders.value[idx] = updatedOrder;
     }
   });
+  socket.on('order_waiter_assigned', (updatedOrder) => {
+    const idx = orders.value.findIndex(o => o._id === updatedOrder._id);
+    if (idx !== -1) orders.value[idx] = updatedOrder;
+  });
 });
 
 onUnmounted(() => {
   socket.disconnect();
 });
 </script>
-
-<style scoped>
-/* Palette : #3D3323, #87674D, #CCBDAC */
-
-.kitchen-container {
-  min-height: 100vh;
-  background-color: #3D3323;
-  color: #FAF8F5;
-  padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.kitchen-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #87674D;
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
-}
-
-.kitchen-header h1 {
-  margin: 0;
-  color: #CCBDAC;
-  font-size: 1.8rem;
-}
-
-.active-count {
-  background-color: #87674D;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-.orders-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.order-card {
-  background-color: #FAF8F5;
-  color: #3D3323;
-  border-radius: 12px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border-top: 6px solid #87674D;
-}
-
-.border-pending { border-top-color: #d97706; }
-.border-preparing { border-top-color: #2563eb; }
-.border-ready { border-top-color: #16a34a; }
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-
-.table-badge {
-  background-color: #3D3323;
-  color: #FAF8F5;
-  font-weight: bold;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-}
-
-.time-stamp {
-  font-size: 0.85rem;
-  color: #87674D;
-  font-weight: 600;
-}
-
-.status-indicator {
-  text-align: center;
-  padding: 0.4rem;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.status-pending { background-color: #fef3c7; color: #92400e; }
-.status-preparing { background-color: #dbeafe; color: #1e40af; }
-.status-ready { background-color: #dcfce7; color: #166534; }
-
-.items-list {
-  border-top: 1px solid #CCBDAC;
-  border-bottom: 1px solid #CCBDAC;
-  padding: 0.75rem 0;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.item-row {
-  display: flex;
-  gap: 0.75rem;
-  font-size: 1rem;
-}
-
-.qty {
-  font-weight: bold;
-  color: #87674D;
-}
-
-.name {
-  font-weight: 500;
-}
-
-.card-actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.btn {
-  width: 100%;
-  border: none;
-  padding: 0.75rem;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.btn:hover { opacity: 0.9; }
-
-.btn-prepare { background-color: #d97706; color: white; }
-.btn-ready { background-color: #2563eb; color: white; }
-.btn-complete { background-color: #16a34a; color: white; }
-
-.empty-state, .loading-state {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem;
-  font-size: 1.2rem;
-  color: #CCBDAC;
-}
-
-.error-banner {
-  background-color: #dc2626;
-  color: white;
-  padding: 0.75rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-</style>

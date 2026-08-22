@@ -19,6 +19,11 @@ const orderSchema = new mongoose.Schema({
     type: String, 
     enum: ['PENDING', 'IN_PREPARATION', 'READY', 'SERVED', 'CANCELLED'], 
     default: 'PENDING' 
+  },
+  waiter: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null
   }
 }, { timestamps: true });
 
