@@ -1,0 +1,112 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam backgroundColor #FAF9F6
+skinparam class {
+    BackgroundColor White
+    BorderColor #3D2B1F
+    ArrowColor #3D2B1F
+}
+
+' Classes Definition
+
+abstract class User {
+  # _id: ObjectId
+  # username: String
+  # passwordHash: String
+  # createdAt: Date
+  + login(credentials): String
+}
+
+class AdminUser {
+  - permissions: String[]
+  + manageMenuItems(): Void
+  + manageStaffAccounts(): Void
+  + viewSalesReports(): Void
+}
+
+class StaffUser {
+  - station: String
+  + updateOrderStatus(orderId, status): Void
+  + viewActiveKDS(): List<Order>
+}
+
+class KitchenUser {
+  + markAsInPreparation(orderId): Void
+  + markAsReady(orderId): Void
+}
+
+class WaiterUser {
+  + markAsServed(orderId): Void
+  + processPayment(orderId): Void
+}
+
+class MenuItem {
+  - _id: ObjectId
+  - category: ObjectId
+  - name: String
+  - description: String
+  - price: Number
+  - imageUrl: String
+  - isAvailable: Boolean
+  - customizationOptions: String[]
+  + toggleAvailability(): Void
+}
+
+class Category {
+  - _id: ObjectId
+  - name: String
+  - description: String
+  - icon: String
+}
+
+class Order {
+  - _id: ObjectId
+  - orderNumber: String
+  - tableNumber: Number
+  - items: OrderItem[]
+  - totalAmount: Number
+  - status: OrderStatus
+  - paymentStatus: PaymentStatus
+  - createdAt: Date
+  + calculateTotal(): Number
+  + updateStatus(newStatus): Void
+  + markAsPaid(): Void
+}
+
+class OrderItem {
+  - menuItem: ObjectId
+  - name: String
+  - quantity: Number
+  - unitPrice: Number
+  - options: String[]
+  - itemTotal: Number
+}
+
+enum OrderStatus {
+  PENDING
+  IN_PREPARATION
+  READY
+  SERVED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+}
+
+' Inheritance Relationships
+User <|-- AdminUser
+User <|-- StaffUser
+StaffUser <|-- KitchenUser
+StaffUser <|-- WaiterUser
+
+' Association & Composition Relationships
+Category "1" -- "*" MenuItem : categorizes >
+Order "1" *-- "1..*" OrderItem : contains >
+MenuItem "1" -- "*" OrderItem : references <
+StaffUser "1" -- "*" Order : manages >
+Order "1" -- "1" OrderStatus
+Order "1" -- "1" PaymentStatus
+
+@enduml
