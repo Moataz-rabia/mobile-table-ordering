@@ -5,7 +5,7 @@ import KitchenDashboard from '../views/kitchen/KitchenDashboard.vue';
 // 1. Imports des vues Client (Adaptez les chemins si vos fichiers sont dans /components ou /views)
 import CustomerMenu from '../views/client/Menu.vue';
 import OrderStatus from '../views/client/OrderStatus.vue';
-
+import Admin  from '../views/Admin.vue';
 const routes = [
   // Route Login
   { 
@@ -21,7 +21,12 @@ const routes = [
     component: KitchenDashboard,
     meta: { requiresAuth: true, role: 'KITCHEN' } 
   },
-
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin,
+    meta: { requiresAuth: true, role: 'ADMIN' }
+  },
   // Routes Publiques Client (Accessible via QR Code sur les tables)
   { 
     path: '/table/:tableNumber', 

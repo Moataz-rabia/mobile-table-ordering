@@ -21,7 +21,6 @@
         <header class="header">
           <span class="table-badge">Table N° {{ order.tableNumber }}</span>
           <h2>Suivi de commande</h2>
-          <p class="order-id">ID: {{ order._id }}</p>
         </header>
 
         <!-- Indicateur de Statut -->

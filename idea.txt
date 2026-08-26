@@ -11,3 +11,5 @@
 -des animations specifique pour les boutons (cafe style)
 
 -des images pour les serveurs
+
+admin:les routes de CRUD de  menu

@@ -1,0 +1,13 @@
+src/
+├── components/
+│   └── admin/
+│       ├── AdminHeader.vue         # Top bar with title, badge & logout button
+│       ├── AdminTabs.vue           # Tab navigation buttons (Menu / Users)
+│       ├── MenuManager.vue         # Parent component for the Menu tab
+│       │   ├── DishForm.vue        # Form to create/edit a dish: DishForm est un simple outil de saisie (il lit les textes tapés et les donne au parent).
+│       │   └── DishTable.vue       # List of menu items with actions : DishTable est un simple affichage (il affiche la liste et signale les clics).
+│       └── UserManager.vue         # Parent component for the Users tab
+│           ├── UserForm.vue        # Form to register a user (KITCHEN, WAITER, ADMIN)
+│           └── UserTable.vue       # List of registered users with delete action
+└── views/
+    └── AdminDashboard.vue          # Main layout orchestrating active tabs & layout

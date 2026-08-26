@@ -43,7 +43,7 @@ const handleLogin = async () => {
     sessionStorage.setItem('user', JSON.stringify(loggedUser));
     // Redirection conditionnelle selon le rôle
     if (loggedUser.role === 'ADMIN') {
-      router.push('/admin/dashboard');
+      router.push('/admin');
     } else if (loggedUser.role === 'KITCHEN') {
       router.push('/kitchen');
     } else {
