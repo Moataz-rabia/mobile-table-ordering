@@ -79,7 +79,7 @@
 
 .time-stamp {
   font-size: 0.85rem;
-  color: #87674D;
+  color: white;
   font-weight: 600;
 }
 
@@ -137,11 +137,12 @@
 
 .qty {
   font-weight: bold;
-  color: #87674D;
+  color: white;
 }
 
 .name {
   font-weight: 500;
+  color: white;
 }
 
 .card-actions {

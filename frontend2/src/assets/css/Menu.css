@@ -1,10 +1,29 @@
+/* Réinitialisation globale pour coller l'arrière-plan aux bords de l'écran */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3D3323; /* Évite un flash blanc pendant le chargement */
+  overflow-x: hidden; /* Empêche tout défilement horizontal indésirable */
+}
+
 .page-container {
   --dark-espresso: #3D3323;
   --warm-brown:    #87674D;
   --soft-sand:     #CCBDAC;
   --light-cream:   #F8F5F0;
-
-  background-color: var(--dark-espresso);
+  
+  /* Image d'arrière-plan avec calque sombre */
+  background-image: 
+    linear-gradient(rgba(61, 51, 35, 0.85), rgba(30, 25, 17, 0.90)), 
+    url('../cafe_paradise.jpg');
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* L'image reste fixe lors du défilement */
+  
   color: var(--light-cream);
   min-height: 100vh;
   font-family: 'Work Sans', sans-serif;
@@ -18,6 +37,7 @@
 }
 
 /* Nav */
+
 nav.nav-scrolled {
   position: sticky;
   top: 0;
@@ -40,6 +60,7 @@ nav.nav-scrolled {
   font-size: 22px;
   font-style: italic;
 }
+
 .logo svg { width: 26px; height: 26px; stroke: var(--soft-sand); }
 
 .table-badge {
@@ -50,6 +71,7 @@ nav.nav-scrolled {
   border-radius: 100px;
   font-size: 12px;
 }
+
 
 /* Header */
 .menu-head {
@@ -68,6 +90,7 @@ nav.nav-scrolled {
   font-size: clamp(32px, 4vw, 48px);
   color: var(--light-cream);
 }
+
 .menu-head h2 em { color: var(--soft-sand); font-style: italic; }
 
 .menu-tabs {
@@ -101,6 +124,9 @@ nav.nav-scrolled {
   margin: 40px auto 0;
   padding: 0 5vw;
 }
+
+
+/* Menu Layout */
 
 .menu-layout {
   display: grid;
@@ -143,20 +169,29 @@ nav.nav-scrolled {
 }
 
 .btn-add {
-  background: transparent;
-  border: 1px solid var(--soft-sand);
-  color: var(--soft-sand);
-  padding: 8px 18px;
-  border-radius: 100px;
+  background: linear-gradient(145deg, #87674D, #3D3323);
+  color: #CCBDAC;
+  border: 2px solid #3D3323;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.2s;
-  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(61, 51, 35, 0.4);
+  transition: all 0.25s ease;
 }
 
 .btn-add:hover {
-  background: var(--warm-brown);
-  border-color: var(--warm-brown);
-  color: var(--light-cream);
+  background: linear-gradient(145deg, #3D3323, #87674D);
+  color: #ffffff;
+  box-shadow: 0 6px 10px rgba(61, 51, 35, 0.5);
+  transform: translateY(-2px);
+}
+.btn-add:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(61, 51, 35, 0.4);
 }
 
 /* Card Panier */

@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import api from '../../api/axios'; // Centralized Axios instance.
-import '../../assets/css/menu.css';
+import '../../assets/css/Menu.css';
 const route = useRoute();
 
 // Données
