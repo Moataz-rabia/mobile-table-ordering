@@ -1,0 +1,11 @@
+/* ============================================
+   UserTable — tableau des utilisateurs enregistrés
+   Complète .card / table de base.css
+   ============================================ */
+.list-card {
+  height: fit-content;
+}
+
+.user-name {
+  color: var(--coffee-cream);
+}

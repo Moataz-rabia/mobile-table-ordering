@@ -4,10 +4,16 @@ import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import listEndpoints from 'express-list-endpoints';
 
 import menuRoutes from './routes/menuRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import userRoutes from './routes/users.js';
+
+//admin routes
+import adminMenuRoutes from './routes/admin-crud/adminMenuRoutes.js';
+import adminUserRoutes from './routes/admin-crud/adminUserRoutes.js';
+
 dotenv.config();
 
 const app = express();
@@ -42,6 +48,16 @@ app.use((req, res, next) => {
 app.use('/api/menu', menuRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
+
+//admin routes
+app.use('/api/admin/menu', adminMenuRoutes);
+app.use('/api/admin/users', adminUserRoutes);
+
+
+// Affiche la liste au démarrage du serveur
+console.log('LISTE DES ENDPOINTS BACKEND :');
+console.table(listEndpoints(app));
+
 // Socket.IO Event Handler
 io.on('connection', (socket) => {
   console.log(`⚡ Staff / Client connected: ${socket.id}`);

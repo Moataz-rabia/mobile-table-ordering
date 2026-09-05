@@ -5,7 +5,7 @@ import KitchenDashboard from '../views/kitchen/KitchenDashboard.vue';
 // 1. Imports des vues Client (Adaptez les chemins si vos fichiers sont dans /components ou /views)
 import CustomerMenu from '../views/client/Menu.vue';
 import OrderStatus from '../views/client/OrderStatus.vue';
-import Admin  from '../views/Admin.vue';
+import Admin  from './../views/Admin.vue';
 const routes = [
   // Route Login
   { 

@@ -1,0 +1,292 @@
+/* ============================================
+   Styles partagés — thème "Coffee Shop Admin"
+   Importer après variables.css, une seule fois
+   (ex: dans main.js ou App.vue)
+   ============================================ */
+
+/* ---------- Cards génériques ---------- */
+.card {
+  background: var(--surface-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-body);
+  transition: var(--transition);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--coffee-light);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+/* ---------- Formulaires ---------- */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  color: var(--coffee-light);
+  opacity: 0.85;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select,
+.select-input {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--surface-input);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  box-sizing: border-box;
+  transition: var(--transition-fast);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(204, 189, 172, 0.45);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.select-input:focus {
+  outline: none;
+  border-color: var(--coffee-light);
+  background: var(--surface-input-focus);
+  box-shadow: 0 0 0 3px rgba(204, 189, 172, 0.15);
+}
+
+.select-input {
+  cursor: pointer;
+  appearance: none;
+  background-color: var(--surface-input);
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ---------- Boutons ---------- */
+.btn-primary,
+.btn-secondary {
+  padding: 11px 22px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(145deg, var(--coffee-medium), var(--coffee-dark));
+  color: var(--coffee-light);
+  border-color: var(--coffee-dark);
+  flex: 1;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(145deg, var(--coffee-dark), var(--coffee-medium));
+  color: var(--coffee-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--coffee-light);
+  border-color: var(--border-medium);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-input);
+  border-color: var(--border-strong);
+  color: var(--coffee-cream);
+}
+
+.btn-icon {
+  background: var(--surface-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--coffee-light);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  margin-left: 6px;
+}
+
+.btn-icon:hover {
+  background: var(--surface-input-focus);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.btn-icon.edit-btn:hover { border-color: var(--info-border); }
+.btn-icon.delete-btn,
+.btn-icon.delete {
+  background: var(--danger-bg);
+  border-color: var(--danger-border);
+  color: #E8A39C;
+}
+.btn-icon.delete-btn:hover,
+.btn-icon.delete:hover {
+  background: var(--danger);
+  color: var(--coffee-white);
+}
+
+/* ---------- Alertes / notifications ---------- */
+.alert-banner {
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  animation: slideDown 0.3s ease;
+}
+
+.alert-banner.success {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  color: #A8D191;
+}
+
+.alert-banner.error {
+  background: var(--danger-bg);
+  border-color: var(--danger-border);
+  color: #F0AFA8;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Tableaux ---------- */
+.table-wrapper,
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+th {
+  color: var(--coffee-light);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+tbody tr {
+  transition: var(--transition-fast);
+}
+
+tbody tr:hover {
+  background: var(--surface-row-hover);
+}
+
+.font-medium {
+  color: var(--coffee-cream);
+  font-weight: 600;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* ---------- Badges / tags ---------- */
+.badge {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.category-badge {
+  background: var(--surface-input);
+  border: 1px solid var(--border-medium);
+  color: var(--coffee-light);
+}
+
+.role-tag {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  display: inline-block;
+}
+
+.role-tag.kitchen {
+  background: var(--warning-bg);
+  color: var(--role-kitchen);
+  border: 1px solid var(--warning-border);
+}
+.role-tag.waiter {
+  background: var(--info-bg);
+  color: var(--role-waiter);
+  border: 1px solid var(--info-border);
+}
+.role-tag.admin {
+  background: var(--success-bg);
+  color: var(--role-admin);
+  border: 1px solid var(--success-border);
+}
+
+/* ---------- États (loading / empty) ---------- */
+.loading-state,
+.empty-state,
+.state-msg {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--coffee-light);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}

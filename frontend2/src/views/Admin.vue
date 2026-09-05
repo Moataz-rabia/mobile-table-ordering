@@ -1,20 +1,23 @@
 <template>
-  <h1 style="color: white;">hello</h1>
+  <div class="admin-container">
+    <!-- Header avec onglets -->
+    <AdminHeader v-model:activeTab="currentTab" />
+
+    <!-- Contenu dynamique selon l'onglet sélectionné -->
+    <main class="tab-content">
+      <MenuManager v-if="currentTab === 'menu'" />
+      <UserManager v-else-if="currentTab === 'users'" />
+    </main>
+  </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-/*import AdminHeader from '../components/admin/AdminHeader.vue';
-import AdminTabs from '../components/admin/AdminTabs.vue';
+import AdminHeader from '../components/admin/AdminHeader.vue';
 import MenuManager from '../components/admin/MenuManager.vue';
 import UserManager from '../components/admin/UserManager.vue';
+import '../assets/css/espace-admin-css/Admin.css';
 
-const router = useRouter();
-const activeTab = ref('menu');
-
-const handleLogout = () => {
-  localStorage.removeItem('user');
-  router.push('/');
-};*/
+// État de l'onglet actif ('menu' par défaut)
+const currentTab = ref('menu');
 </script>

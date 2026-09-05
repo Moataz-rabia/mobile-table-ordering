@@ -9,7 +9,7 @@
   /* 1. Image de fond avec couche sombre (overlay) */
   background-image: 
     linear-gradient(rgba(61, 51, 35, 0.85), rgba(30, 25, 17, 0.90)), 
-    url('../cafe_paradise.jpg');
+    url('../images/cafe_paradise.jpg');
 
   /* 2. Propriétés d'affichage de l'image */
   background-size: cover;

@@ -1,0 +1,28 @@
+/* ============================================
+   Admin — vue racine de l'espace administration
+   Point d'entrée : importe les tokens + styles
+   partagés une seule fois pour toute la section admin
+   ============================================ */
+@import './variables.css';
+@import './base.css';
+
+.admin-container {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(36, 29, 20, 0.92) 0%, rgba(36, 29, 20, 0.97) 100%),
+    url('/images/coffee-shop-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--coffee-cream);
+  font-family: var(--font-body);
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

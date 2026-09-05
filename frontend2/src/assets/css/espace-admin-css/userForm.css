@@ -1,0 +1,12 @@
+/* ============================================
+   UserForm — formulaire de création d'utilisateur
+   Complète .card / .form-group / .btn-primary de base.css
+   ============================================ */
+.form-card {
+  height: fit-content;
+}
+
+.form-card .btn-primary {
+  width: 100%;
+  margin-top: 6px;
+}

@@ -12,15 +12,4 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
-// POST new menu item
-router.post('/', async (req, res) => {
-  try {
-    const newItem = await MenuItem.create(req.body);
-    res.status(201).json(newItem);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-
 export default router;

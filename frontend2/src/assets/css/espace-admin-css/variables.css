@@ -1,0 +1,67 @@
+/* ============================================
+   Design tokens — thème "Coffee Shop Admin"
+   À importer en premier (avant base.css)
+   ============================================ */
+:root {
+  /* Palette café */
+  --coffee-darkest: #241D14;
+  --coffee-dark: #3D3323;
+  --coffee-medium: #87674D;
+  --coffee-medium-light: #A38660;
+  --coffee-light: #CCBDAC;
+  --coffee-cream: #F8F5F0;
+  --coffee-white: #FFFFFF;
+
+  /* Surfaces */
+  --surface-card: rgba(61, 51, 35, 0.65);
+  --surface-card-hover: rgba(61, 51, 35, 0.8);
+  --surface-input: rgba(204, 189, 172, 0.12);
+  --surface-input-focus: rgba(204, 189, 172, 0.2);
+  --surface-row-hover: rgba(204, 189, 172, 0.06);
+
+  /* Bordures */
+  --border-subtle: rgba(204, 189, 172, 0.15);
+  --border-medium: rgba(204, 189, 172, 0.3);
+  --border-strong: rgba(204, 189, 172, 0.5);
+
+  /* États sémantiques (teintés café) */
+  --success: #7BA05B;
+  --success-bg: rgba(123, 160, 91, 0.15);
+  --success-border: rgba(123, 160, 91, 0.35);
+
+  --danger: #C1544A;
+  --danger-bg: rgba(193, 84, 74, 0.15);
+  --danger-border: rgba(193, 84, 74, 0.35);
+
+  --warning: #D19A4A;
+  --warning-bg: rgba(209, 154, 74, 0.15);
+  --warning-border: rgba(209, 154, 74, 0.35);
+
+  --info: #5C8AA8;
+  --info-bg: rgba(92, 138, 168, 0.15);
+  --info-border: rgba(92, 138, 168, 0.35);
+
+  /* Rôles utilisateurs */
+  --role-kitchen: #D19A4A;
+  --role-waiter: #5C8AA8;
+  --role-admin: #7BA05B;
+
+  /* Rayons */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 20px;
+
+  /* Ombres */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 34px rgba(0, 0, 0, 0.45);
+
+  /* Typo */
+  --font-heading: 'Georgia', 'Playfair Display', serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Transitions */
+  --transition: all 0.25s ease;
+  --transition-fast: all 0.15s ease;
+}

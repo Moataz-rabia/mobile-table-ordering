@@ -60,7 +60,7 @@ import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import api from '../../api/axios'; // Centralized Axios instance.
 import { io } from 'socket.io-client';
-import '../../assets/css/orderStatus.css';
+import '../../assets/css/OrderStatus.css';
 const route = useRoute();
 const router = useRouter();
 

@@ -1,0 +1,52 @@
+/* ============================================
+   AdminHeader — barre de navigation admin
+   ============================================ */
+.nav-scrolled {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: linear-gradient(180deg, var(--coffee-dark) 0%, var(--coffee-darkest) 100%);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 18px 32px;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--coffee-cream);
+  letter-spacing: 0.4px;
+}
+
+.brand-subtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--coffee-light);
+  opacity: 0.75;
+}
+
+.nav-tabs-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .nav-scrolled {
+    padding: 14px 18px;
+  }
+  .brand-title {
+    font-size: 1.15rem;
+  }
+}

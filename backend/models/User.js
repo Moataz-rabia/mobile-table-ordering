@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
     type: String, 
     enum: ['ADMIN', 'KITCHEN', 'WAITER'], 
     default: 'KITCHEN' 
-  }
+  },
+  image: { type: String, default: '' }
 }, { timestamps: true });
 
 export default mongoose.model('User', userSchema);
