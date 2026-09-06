@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import listEndpoints from 'express-list-endpoints';
+import path from 'path';
 
 import menuRoutes from './routes/menuRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
@@ -27,10 +28,9 @@ const io = new Server(server, {
   }
 });
 
-// Allow requests from Vite frontend
+// Allow requests from any origin (for QR code / mobile access)
 app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
+  origin: '*'
 }));
 
 // Make socket.io available inside express routes
@@ -53,6 +53,9 @@ app.use('/api/users', userRoutes);
 app.use('/api/admin/menu', adminMenuRoutes);
 app.use('/api/admin/users', adminUserRoutes);
 
+// Serve QR codes statically
+app.use('/qrcodes', express.static(path.join(process.cwd(), 'public', 'qrcodes')));
+
 
 // Affiche la liste au démarrage du serveur
 console.log('LISTE DES ENDPOINTS BACKEND :');
@@ -74,8 +77,8 @@ const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('✅ Connected to MongoDB');
-    server.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    server.listen(PORT, '0.0.0.0', () => {
+      console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
     });
   })
   .catch((err) => {

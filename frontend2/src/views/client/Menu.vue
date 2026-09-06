@@ -38,6 +38,11 @@ const fetchMenu = async () => {
 };
 
 onMounted(() => {
+  // Store the table number in localStorage for order submission
+  const tableNum = route.params.tableNumber;
+  if (tableNum) {
+    localStorage.setItem('activeTable', tableNum);
+  }
   fetchMenu();
 });
 
@@ -87,7 +92,7 @@ const sendOrder = async () => {
 
   try {
     const payload = {
-      tableNumber: tableNumber.value,
+      tableNumber: Number(localStorage.getItem('activeTable')),
       items: cart.value.map(item => ({
         menuItem: item._id,
         name: item.name,

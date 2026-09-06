@@ -68,7 +68,7 @@ const orderId = route.params.orderId;
 const order = ref(null);
 const loading = ref(true);
 const errorMessage = ref('');
-const socket = io('http://localhost:5000');
+const socket = io('http://192.168.1.28:5000');
 
 // Récupération initiale de la commande
 const fetchOrderStatus = async () => {

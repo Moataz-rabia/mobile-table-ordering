@@ -108,7 +108,7 @@ const errorMessage = ref('');
 const waitersList = ref([]); // Lista des serveurs
 
 // Connexion au serveur Socket.IO
-const socket = io('http://localhost:5000');
+const socket = io('http://192.168.1.28:5000');
 
 // Récupération des commandes actives
 const fetchOrders = async () => {

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "generate-qrs": "node scripts/generateTableQRs.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -15,6 +16,7 @@
     "express-list-endpoints": "^7.1.1",
     "mongoose": "^8.3.0",
     "multer": "^2.3.0",
+    "qrcode": "^1.5.4",
     "socket.io": "^4.7.5"
   },
   "devDependencies": {

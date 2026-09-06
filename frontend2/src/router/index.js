@@ -28,10 +28,11 @@ const routes = [
     meta: { requiresAuth: true, role: 'ADMIN' }
   },
   // Routes Publiques Client (Accessible via QR Code sur les tables)
-  { 
-    path: '/table/:tableNumber', 
+  {
+    path: '/table/:tableNumber',
     name: 'CustomerMenu',
-    component: CustomerMenu 
+    component: CustomerMenu,
+    props: true
   },
   {
     path: '/status/:orderId',
